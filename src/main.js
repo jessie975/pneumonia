@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import echarts from 'echarts'
-import 'echarts/map/js/china'
 
 Vue.prototype.$echarts = echarts
 

@@ -16,7 +16,6 @@
             <div class="desc">{{item.desc}}</div>
           </div>
       </div>
-      <h2 class="title">疫情地图</h2>
       <virus-map></virus-map>
     </div>
   </div>
@@ -34,22 +33,22 @@ export default {
       statistics: [
         {
           id: 1,
-          number: 7766,
+          number: 11848,
           desc: '确诊病例'
         },
         {
           id: 2,
-          number: 12139,
+          number: 17988,
           desc: '疑似病例'
         },
         {
           id: 3,
-          number: 133,
+          number: 262,
           desc: '治愈病患'
         },
         {
           id: 4,
-          number: 170,
+          number: 259,
           desc: '死亡病例'
         }
       ]
