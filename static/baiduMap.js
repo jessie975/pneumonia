@@ -1,7 +1,14 @@
-(function () {
-  window.HOST_TYPE = '2'
-  window.BMap_loadScriptTime = (new Date()).getTime()
-  document.write(
-    '<script type="text/javascript" src="https://api.map.baidu.com/getscript?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&services=&t=20200103103842"></script>'
-  )
-})()
+import BMap from 'echarts/dist/extension/bmap.min.js'
+
+export function MP (ak) {
+  return new Promise(function (resolve, reject) {
+    window.onload = function () {
+      resolve(BMap)
+    }
+    var script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.src = 'http://api.map.baidu.com/api?v=2.0&ak=' + ak + '&callback=init'
+    script.onerror = reject
+    document.head.appendChild(script)
+  })
+}

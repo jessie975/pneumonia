@@ -16,6 +16,7 @@
             <div class="desc">{{item.desc}}</div>
           </div>
       </div>
+      <h2 class="title">疫情地图</h2>
       <virus-map></virus-map>
     </div>
   </div>
