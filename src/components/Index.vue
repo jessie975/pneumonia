@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
     <div class="header">
       <div class="title">
         <span class="h3">新型冠状肺炎</span>
@@ -9,21 +9,36 @@
       <img class="img" src="../assets/病毒图片.png" alt="病毒图片">
     </div>
     <div class="main">
-      <h2 class="title">统计</h2>
+      <h2 class="title">统计<span class="updateTime">更新时间：{{updateTime}}</span></h2>
       <div class="statistics">
-          <div v-for="item in statistics" :key="item.id">
-            <div class="number">{{item.number}}</div>
-            <div class="desc">{{item.desc}}</div>
+          <div>
+            <div class="number">{{data.confirm}}</div>
+            <div class="desc">确诊病例</div>
+          </div>
+          <div>
+            <div class="number">{{data.suspect}}</div>
+            <div class="desc">疑似病例</div>
+          </div>
+          <div>
+            <div class="number">{{data.heal}}</div>
+            <div class="desc">治愈人数</div>
+          </div>
+          <div>
+            <div class="number">{{data.dead}}</div>
+            <div class="desc">死亡人数</div>
           </div>
       </div>
       <h2 class="title">疫情地图</h2>
       <virus-map></virus-map>
+      <h2 class="title">各地情况统计</h2>
     </div>
   </div>
 </template>
 
 <script>
 import VirusMap from './VirusMap'
+import originData from '../../static/originData.json'
+
 export default {
   name: 'Index',
   components: {
@@ -31,29 +46,18 @@ export default {
   },
   data () {
     return {
-      statistics: [
-        {
-          id: 1,
-          number: 11848,
-          desc: '确诊病例'
-        },
-        {
-          id: 2,
-          number: 17988,
-          desc: '疑似病例'
-        },
-        {
-          id: 3,
-          number: 262,
-          desc: '治愈病患'
-        },
-        {
-          id: 4,
-          number: 259,
-          desc: '死亡病例'
-        }
-      ]
+      data: {},
+      updateTime: ''
     }
+  },
+  methods: {
+    initData () {
+      this.data = originData.chinaTotal
+      this.updateTime = originData.lastUpdateTime
+    }
+  },
+  mounted () {
+    this.initData()
   }
 }
 </script>
@@ -78,12 +82,13 @@ export default {
     max-height: 100%;
   }
   .h3 {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: #f3f3f3;
     padding: 0 10px;
   }
 }
 .main {
-  margin: 20px 40px;
+  width: 80%;
+  margin: 20px auto;
   .title {
     text-decoration: #22aeb4;
     &::before {
@@ -91,6 +96,11 @@ export default {
       width: 20px;
       height: 100%;
       background-color: #22aeb4;
+    }
+    .updateTime {
+      font-size: 14px;
+      font-weight: 500;
+      float: right;
     }
   }
   .statistics {
