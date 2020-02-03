@@ -35,8 +35,6 @@ export default {
         return res
       }
 
-      console.log(convertData(data))
-
       var option = {
         tooltip: {
           trigger: 'item',
@@ -148,13 +146,17 @@ export default {
             coordinateSystem: 'bmap',
             data: convertData(data),
             symbolSize: function (val) {
-              if (val[2] > 1 && val[2] < 9) {
+              if (val[2] > 1 && val[2] < 5) {
                 return val[2] * 2
+              } else if (val[2] > 5 && val[2] < 9) {
+                return val[2]
               } else if (val[2] > 9 && val[2] < 99) {
                 return val[2] / 2
               } else if (val[2] > 99 && val[2] < 500) {
+                return val[2] / 10
+              } else if (val[2] > 500 && val[2] < 1000) {
                 return val[2] / 100
-              } else {
+              } else if (val[2] > 1000) {
                 return val[2] / 1000
               }
             },

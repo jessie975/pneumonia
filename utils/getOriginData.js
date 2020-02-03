@@ -27,4 +27,4 @@ setInterval(() => {
   data.then(list => {
     writeFile(list)
   })
-}, 86400)
+}, 1000)

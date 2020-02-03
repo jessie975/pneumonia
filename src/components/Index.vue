@@ -30,19 +30,28 @@
       </div>
       <h2 class="title">疫情地图</h2>
       <virus-map></virus-map>
-      <h2 class="title">各地情况统计</h2>
+      <h2 class="title">中国各地情况统计</h2>
+      <table-tree></table-tree>
+    </div>
+    <div class="header">
+      <div class="title">
+        <h1>武汉加油！中国加油!</h1>
+        <h5>项目源代码：<a href="https://github.com/jessie975/virus-statistical" class="github">https://github.com/jessie975/virus-statistical</a></h5>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import VirusMap from './VirusMap'
+import TableTree from './TableTree'
 import originData from '../../static/originData.json'
 
 export default {
   name: 'Index',
   components: {
-    VirusMap
+    VirusMap,
+    TableTree
   },
   data () {
     return {
@@ -72,8 +81,12 @@ export default {
   justify-content: space-between;
   color: white;
   .title {
-    margin-left: 40px;
+    margin-left: 135px;
     margin-top: 35px;
+    .github {
+      text-decoration: none;
+      color: #fff;
+    }
   }
   .img {
     width: auto;
@@ -82,7 +95,7 @@ export default {
     max-height: 100%;
   }
   .h3 {
-    background-color: #f3f3f3;
+    background-color: rgba(255, 255, 255, 0.3);
     padding: 0 10px;
   }
 }
